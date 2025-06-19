@@ -125,10 +125,11 @@ export default function LoginForm() {
         <div className="text-center mb-8">
           <Link  href="/" className="flex justify-center mb-4">
             <Image
-                src="/pic.jpeg"
+              src="/pic.jpeg"
               alt="Logo"
               width={80}
               height={80}
+              priority
               className="mx-auto mb-6"
             />
           </Link>

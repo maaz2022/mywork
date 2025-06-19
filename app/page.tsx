@@ -65,6 +65,13 @@ export default function LandingPage() {
                 alt="Logo"
                 width={200}
                 height={200}
+                priority
+                onLoad={() => console.log('Landing page logo loaded successfully')}
+                onError={(e) => {
+                  console.log('Image failed to load, trying fallback');
+                  const target = e.target as HTMLImageElement;
+                  target.src = '/logo2.png';
+                }}
                 className="shadow-lg transform rounded-full hover:scale-105 transition-transform duration-300 relative z-10"
               />
             </div>
