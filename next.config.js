@@ -2,6 +2,7 @@
 const nextConfig = {
   images: {
     domains: ['hackinsportswear.co.uk'],
+    unoptimized: true, // This will prevent Next.js from optimizing local images
   },
   async headers() {
     return [

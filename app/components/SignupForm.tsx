@@ -128,7 +128,7 @@ export default function SignupForm() {
         <div className="text-center mb-8">
           <Link href="/" className="flex justify-center mb-4">
             <Image
-              src="/logo2.jpeg"
+              src="/pic.jpeg"
               alt="Logo"
               width={80}
               height={80}
