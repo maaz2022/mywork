@@ -4,6 +4,16 @@ import type { NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // Skip middleware for static files and images
+  if (
+    pathname.startsWith('/_next/') ||
+    pathname.startsWith('/favicon.ico') ||
+    pathname.match(/\.(jpg|jpeg|png|gif|svg|ico|webp|avif)$/) ||
+    pathname.startsWith('/api/')
+  ) {
+    return NextResponse.next();
+  }
+
   // Handle CORS for API routes
   if (pathname.startsWith('/api/')) {
     const response = NextResponse.next()
@@ -62,7 +72,8 @@ export const config = {
      * - _next/static (static files)
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
+     * - static files (images, etc.)
      */
-    "/((?!_next/static|_next/image|favicon.ico).*)",
+    '/((?!_next/static|_next/image|favicon\\.ico).*)',
   ],
 }; 
