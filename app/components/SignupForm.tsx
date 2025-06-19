@@ -126,16 +126,13 @@ export default function SignupForm() {
 
       <div className="relative max-w-md mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
-          <Link href="/" className="flex justify-center mb-4">
-            <Image
-              src="/logo.jpeg"
-              alt="Logo"
-              width={80}
-              height={80}
-              priority
-              className="mx-auto mb-6"
-            />
-          </Link>
+          <img
+            src="/logo2.png" 
+            alt="Logo"
+            width={80}
+            height={80}
+            className="mx-auto mb-6"
+          />
           <h2 className="text-4xl font-bold text-purple-600 mb-2 animate-fade-in">Create Account</h2>
           <p className="text-muted-foreground text-lg animate-fade-in animation-delay-200">Join our community today</p>
         </div>

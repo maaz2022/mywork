@@ -60,19 +60,18 @@ export default function LandingPage() {
           <div className="flex justify-center mb-8">
             <div className="relative">
               <div className="absolute inset-0 bg-purple-500 rounded-full blur-2xl opacity-20 animate-pulse"></div>
-              <Image
+              <img
                 src="/pic.jpeg"
                 alt="Logo"
                 width={200}
                 height={200}
-                priority
+                className="shadow-lg transform rounded-full hover:scale-105 transition-transform duration-300 relative z-10"
                 onLoad={() => console.log('Landing page logo loaded successfully')}
                 onError={(e) => {
                   console.log('Image failed to load, trying fallback');
                   const target = e.target as HTMLImageElement;
-                  target.src = '/logo2.png';
+                  target.src = '/logo2.jpeg';
                 }}
-                className="shadow-lg transform rounded-full hover:scale-105 transition-transform duration-300 relative z-10"
               />
             </div>
           </div>

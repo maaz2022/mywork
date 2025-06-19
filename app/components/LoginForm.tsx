@@ -124,12 +124,11 @@ export default function LoginForm() {
       <div className="relative max-w-md mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
           <Link  href="/" className="flex justify-center mb-4">
-            <Image
-              src="/pic.jpeg"
+            <img
+              src="/logo2.png"
               alt="Logo"
               width={80}
               height={80}
-              priority
               className="mx-auto mb-6"
             />
           </Link>
