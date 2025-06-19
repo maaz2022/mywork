@@ -61,7 +61,7 @@ export default function LandingPage() {
             <div className="relative">
               <div className="absolute inset-0 bg-purple-500 rounded-full blur-2xl opacity-20 animate-pulse"></div>
               <Image
-                src="/Logo.jpeg"
+                src="/logo2.jpeg"
                 alt="Logo"
                 width={200}
                 height={200}
