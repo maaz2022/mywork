@@ -22,15 +22,23 @@ function ProductPageContent() {
     if (!id) return;
     const fetchProduct = async () => {
       setLoading(true);
-      const res = await fetch(`/api/products/${id}`);
-      if (!res.ok) {
+      try {
+        // Use relative URL to avoid CORS issues
+        const res = await fetch(`/api/products/${id}`);
+        if (!res.ok) {
+          console.error('API response not ok:', res.status, res.statusText);
+          setProduct(null);
+          setLoading(false);
+          return;
+        }
+        const data = await res.json();
+        setProduct(data);
+      } catch (error) {
+        console.error('Error fetching product:', error);
         setProduct(null);
+      } finally {
         setLoading(false);
-        return;
       }
-      const data = await res.json();
-      setProduct(data);
-      setLoading(false);
     };
     fetchProduct();
   }, [id]);
