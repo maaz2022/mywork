@@ -23,6 +23,16 @@ export default function LandingPage() {
     router.push(path);
   };
 
+  const scrollToPlans = () => {
+    const benefitsSection = document.querySelector('[data-section="benefits"]');
+    if (benefitsSection) {
+      benefitsSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   const stats = [
     { number: "500+", label: "Active Resellers", icon: Users },
     { number: "98%", label: "Success Rate", icon: BarChart },
@@ -67,7 +77,7 @@ export default function LandingPage() {
           </p>
           <div className={`flex justify-center gap-4 transform transition-all duration-1000 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <Button
-              onClick={() => handleNavigation('/signup')}
+              onClick={scrollToPlans}
               size="lg"
               className="group bg-purple-600 hover:bg-purple-700 text-white"
               disabled={isNavigating}
@@ -167,7 +177,7 @@ export default function LandingPage() {
         </div>
 
         {/* Benefits Section */}
-        <div className={`transform transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+        <div data-section="benefits" className={`transform transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           <Benefits />
         </div>
 
@@ -182,7 +192,7 @@ export default function LandingPage() {
             </CardHeader>
             <CardContent className="text-center">
               <Button
-                onClick={() => handleNavigation('/signup')}
+                onClick={scrollToPlans}
                 size="lg"
                 className="group bg-purple-600 hover:bg-purple-700 text-white"
               >

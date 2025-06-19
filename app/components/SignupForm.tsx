@@ -130,9 +130,9 @@ export default function SignupForm() {
             <Image
               src="/logo.jpeg"
               alt="Logo"
-              width={150}
-              height={150}
-              className="rounded-full shadow-lg transform hover:scale-105 transition-transform duration-300"
+              width={80}
+              height={80}
+              className="mx-auto mb-6"
             />
           </Link>
           <h2 className="text-4xl font-bold text-purple-600 mb-2 animate-fade-in">Create Account</h2>

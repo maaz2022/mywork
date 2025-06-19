@@ -58,7 +58,7 @@ export default function Navbar({ onCartClick, showDownloadOption = false, onDown
     <nav className="sticky top-0 z-30 w-full bg-white/70 dark:bg-gray-900/70 border-b border-purple-200 dark:border-purple-800 shadow-lg backdrop-blur-xl rounded-b-2xl">
       <div className="container mx-auto flex items-center justify-between py-3 px-4">
         <Link href={isAdmin ? "/admin" : "/dashboard"} className="flex items-center gap-3">
-          <Image src="/logo2.jpeg" alt="Logo" width={30} height={30}/>
+          <Image src="/logo2.png" alt="Logo" width={30} height={30}/>
           <span className="text-xl font-bold text-purple-700 dark:text-purple-300">Reseller Portal</span>
         </Link>
         {isAdmin ? (
@@ -168,7 +168,7 @@ export default function Navbar({ onCartClick, showDownloadOption = false, onDown
               <SheetContent side="left" className="max-w-xs w-full p-0 bg-white/80 dark:bg-gray-900/80 rounded-r-2xl shadow-2xl backdrop-blur-xl animate-in slide-in-from-left-8 duration-300 border-none">
                 <SheetHeader>
                   <SheetTitle className="flex items-center gap-2 px-4 pt-4">
-                    <Image src="/logo2.jpeg" alt="Logo" width={30} height={30}/>
+                    <Image src="/logo2.png" alt="Logo" width={30} height={30}/>
                     <span className="text-xl font-bold text-purple-700 dark:text-purple-300">Reseller Portal</span>
                   </SheetTitle>
                 </SheetHeader>
