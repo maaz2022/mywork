@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../context/AuthContext";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
@@ -18,7 +18,7 @@ import ProductGrid from "../components/ProductGrid";
 import CartDrawer from "../components/CartDrawer";
 import Navbar from "../components/Navbar";
 
-export default function PremiumDashboard() {
+function PremiumDashboardContent() {
   const { user, loading, userRole } = useAuth();
   const router = useRouter();
   const [verifying, setVerifying] = useState(true);
@@ -153,5 +153,13 @@ export default function PremiumDashboard() {
         </div>
       </div>
     </>
+  );
+}
+
+export default function PremiumDashboard() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PremiumDashboardContent />
+    </Suspense>
   );
 }

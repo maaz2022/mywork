@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../context/AuthContext";
 import { auth } from "@/lib/firebase";
@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { X } from "lucide-react";
 
-export default function ChangePasswordPage() {
+function ChangePasswordContent() {
   const { user } = useAuth();
   const router = useRouter();
   const [form, setForm] = useState({
@@ -113,5 +113,13 @@ export default function ChangePasswordPage() {
         </CardContent>
       </Card>
     </div>
+  );
+}
+
+export default function ChangePasswordPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ChangePasswordContent />
+    </Suspense>
   );
 } 

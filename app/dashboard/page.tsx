@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../context/AuthContext";
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
@@ -12,7 +12,7 @@ import ProductGrid from "../components/ProductGrid";
 import Navbar from "../components/Navbar";
 import CartDrawer from "../components/CartDrawer";
 
-export default function Dashboard() {
+function DashboardContent() {
   const { user, loading, userRole } = useAuth();
   const router = useRouter();
   const [cartOpen, setCartOpen] = useState(false);
@@ -65,5 +65,13 @@ export default function Dashboard() {
         </div>
       </div>
     </>
+  );
+}
+
+export default function Dashboard() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <DashboardContent />
+    </Suspense>
   );
 }

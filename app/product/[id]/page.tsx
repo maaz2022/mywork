@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useParams, notFound } from "next/navigation";
 import Navbar from "@/app/components/Navbar";
 import ProductGallery from "@/app/components/ProductGallery";
@@ -9,7 +9,7 @@ import { useCart } from "@/app/context/CartContext";
 import Link from "next/link";
 import { useAuth } from "@/app/context/AuthContext";
 
-export default function ProductPage() {
+function ProductPageContent() {
   const params = useParams();
   const id = params?.id as string;
   const [product, setProduct] = useState<any>(null);
@@ -114,5 +114,13 @@ export default function ProductPage() {
         <p className="text-purple-700 dark:text-purple-200">Return to <Link href="/dashboard" className="text-purple-700 dark:text-purple-200">Dashboard</Link></p>
       </div>
     </div>
+  );
+}
+
+export default function ProductPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ProductPageContent />
+    </Suspense>
   );
 } 

@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../context/AuthContext";
 import SignupForm from "../components/SignupForm";
 
-export default function SignupPage() {
+function SignupPageContent() {
   const { user, loading, userRole } = useAuth();
   const router = useRouter();
 
@@ -29,10 +29,16 @@ export default function SignupPage() {
 
   return (
     <div >
- 
         {/* <h1 className="text-2xl font-bold text-center mb-8">Create Account</h1> */}
         <SignupForm />
-  
     </div>
+  );
+}
+
+export default function SignupPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SignupPageContent />
+    </Suspense>
   );
 }

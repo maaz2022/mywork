@@ -4,8 +4,9 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../context/AuthContext";
 import LoginForm from "../components/LoginForm";
+import { Suspense } from "react";
 
-export default function LoginPage() {
+function LoginPageContent() {
   const { user, loading, userRole } = useAuth();
   const router = useRouter();
 
@@ -31,5 +32,13 @@ export default function LoginPage() {
     <div>
         <LoginForm />
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LoginPageContent />
+    </Suspense>
   );
 }

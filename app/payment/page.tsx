@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../context/AuthContext";
 import StripePaymentForm from "../components/StripePaymentForm";
 
-export default function PaymentPage() {
+function PaymentPageContent() {
   const router = useRouter();
   const { user } = useAuth();
 
@@ -33,5 +33,13 @@ export default function PaymentPage() {
         <StripePaymentForm />
       </div>
     </div>
+  );
+}
+
+export default function PaymentPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PaymentPageContent />
+    </Suspense>
   );
 } 

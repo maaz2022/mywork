@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useAuth } from "../context/AuthContext";
 import { db } from "@/lib/firebase";
 import { collection, query, where, getDocs, Timestamp } from "firebase/firestore";
@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import CartDrawer from "../components/CartDrawer";
 
-export default function OrdersPage() {
+function OrdersPageContent() {
   const { user } = useAuth();
   const router = useRouter();
   const [orders, setOrders] = useState<any[]>([]);
@@ -151,5 +151,13 @@ export default function OrdersPage() {
         </div>
       </div>
     </>
+  );
+}
+
+export default function OrdersPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <OrdersPageContent />
+    </Suspense>
   );
 } 

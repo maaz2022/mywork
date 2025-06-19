@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Suspense } from "react";
 
 import { Toaster } from "sonner";
 import { ThemeProvider } from "./components/theme-provider";
@@ -21,20 +22,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning   className={inter.className}>
-        <AuthProvider>
-          <CartProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              {children}
-              <Toaster richColors position="top-center" />
-            </ThemeProvider>
-          </CartProvider>
-        </AuthProvider>
+      <body suppressHydrationWarning className={inter.className}>
+        <Suspense fallback={<div>Loading...</div>}>
+          <AuthProvider>
+            <CartProvider>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+              >
+                {children}
+                <Toaster richColors position="top-center" />
+              </ThemeProvider>
+            </CartProvider>
+          </AuthProvider>
+        </Suspense>
       </body>
     </html>
   );
