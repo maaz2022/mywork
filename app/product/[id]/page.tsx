@@ -22,10 +22,7 @@ function ProductPageContent() {
     if (!id) return;
     const fetchProduct = async () => {
       setLoading(true);
-      const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
-        ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-        : 'http://localhost:3000';
-      const res = await fetch(`${baseUrl}/api/products/${id}`);
+      const res = await fetch(`/api/products/${id}`);
       if (!res.ok) {
         setProduct(null);
         setLoading(false);
