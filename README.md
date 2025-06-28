@@ -27,7 +27,7 @@ A modern reseller portal built with Next.js, Firebase, and shadcn/ui.
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd reseller-portal
+cd reseller-portals
 ```
 
 2. Install dependencies:
